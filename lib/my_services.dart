@@ -1,310 +1,265 @@
+
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:port_folio/app_button.dart';
-import 'package:port_folio/app_colors.dart';
-import 'package:port_folio/app_text_styles.dart';
+import 'package:port_folio/globals/app_assets.dart';
+import 'package:port_folio/globals/app_button.dart';
+import 'package:port_folio/globals/app_colors.dart';
+import 'package:port_folio/globals/app_text_styles.dart';
+import 'package:port_folio/globals/constants.dart';
 import 'package:port_folio/helper_class.dart';
 
 class MyServices extends StatefulWidget {
-  const MyServices ({Key? key}) : super(key: key);
+  const MyServices({Key? key}) : super(key: key);
+
   @override
   State<MyServices> createState() => _MyServicesState();
 }
 
 class _MyServicesState extends State<MyServices> {
-  bool isApp = false, isGraphic = false, isWeb = false, isHovering = false;
+  bool isApp = false, isGraphic = false, isDataAnalyst = false;
 
-  final onHoverActive = Matrix4.identity()..translate(10.0, -10.0, 10);
-  final onHoverRemove = Matrix4.identity()..translate(0.0, 0.0, 0);
+  final onHoverActive = Matrix4.identity()..translate(0, -10, 0);
+  final onHoverRemove = Matrix4.identity()..translate(0, 0, 0);
+
+
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: AppColors.bgColor,
-      body:  HelperClass(
-        paddingWidth: 16.0,
-        bgColor: AppColors.bgColor,
-        mobile: 
-         Padding(
-           padding: const EdgeInsets.all(20),
-           child: Column(
-              mainAxisSize: MainAxisSize.min,
-                     children: [
-                      buildmyservice(size),
-                      SizedBox(height: 60),
-                      
-                       Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                         children: [
-                           InkWell(
-                             onTap: () {
-                               setState(() {
-                                 isApp = true;
-                                 isGraphic = false;
-                                 isWeb = false;
-                               });
-                             },
-                                                 
-                           child:projectbox(
-                               icon: Icons.mobile_friendly,
-                               title: 'App Development',
-                               description: 'I develop mobile applications for both android and ios platforms',
-                               hover: isApp, 
-                              ),),
-                                      
-                                        
-                            InkWell(
-                         onTap: () {
-                           setState(() {
-                             isApp = false;
-                             isGraphic = true;
-                             isWeb = false;
-                           });
-                         },
-                                           
-                         child:  projectbox(
-                           icon: Icons.graphic_eq,
-                           title: 'Graphic Design',
-                           description: 'I design logos, banners, flyers, and other graphic designs',
-                                        
-                           hover: isGraphic, 
-                          ),),
-                                        
-                              InkWell(
-                         onTap: () {
-                           setState(() {
-                             isApp = false;
-                             isGraphic = false;
-                             isWeb = true;
-                           });
-                         },
-                         child: projectbox(
-                           icon: Icons.web,
-                           title: 'Web Development',
-                           description: 'I develop websites and web applications using flutter and dart',
-                           hover: isWeb,
-                         ),
-                       ),
-                       ],
-                       ),
-                         
-                     ],
-                   ),
-         ),
-        tablet: 
-        
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-              mainAxisSize: MainAxisSize.min,
-                     children: [
-                      buildmyservice(size),
-                      SizedBox(height: 60),
-                      
-                       Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                         children: [
-                           InkWell(
-                             onTap: () {
-                               setState(() {
-                                 isApp = true;
-                                 isGraphic = false;
-                                 isWeb = false;
-                               });
-                             },
-                                                 
-                           child:projectbox(
-                               icon: Icons.mobile_friendly,
-                               title: 'App Development',
-                               description: 'I develop mobile applications for both android and ios platforms',
-                               hover: isApp, 
-                              ),),
-                    
-                                        
-                                        
-                            InkWell(
-                         onTap: () {
-                           setState(() {
-                             isApp = false;
-                             isGraphic = true;
-                             isWeb = false;
-                           });
-                         },
-                                           
-                         child:  projectbox(
-                           icon: Icons.graphic_eq,
-                           title: 'Graphic Design',
-                           description: 'I design logos, banners, flyers, and other graphic designs',
-                                        
-                           hover: isGraphic, 
-                          ),),
-                                        
-                              InkWell(
-                         onTap: () {
-                           setState(() {
-                             isApp = false;
-                             isGraphic = false;
-                             isWeb = true;
-                           });
-                         },
-                         child: projectbox(
-                           icon: Icons.web,
-                           title: 'Web Development',
-                           description: 'I develop websites and web applications using flutter and dart',
-                           hover: isWeb,
-                         ),
-                       ),
-                       ],
-                       ),
-                         
-                     ],
-                   ),
-        ),
-        desktop: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-              mainAxisSize: MainAxisSize.min,
-                     children: [
-                      buildmyservice(size),
-                      SizedBox(height: 60),
-                      
-                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                         children: [
-                           InkWell(
-                             onTap: () {
-                               setState(() {
-                                 isApp = true;
-                                 isGraphic = false;
-                                 isWeb = false;
-                               });
-                             },
-                                                 
-                           child:projectbox(
-                               icon: Icons.mobile_friendly,
-                               title: 'App Development',
-                               description: 'I develop mobile applications for both android and ios platforms',
-                               hover: isApp, 
-                              ),),
-                                       
-                                        
-                            InkWell(
-                         onTap: () {
-                           setState(() {
-                             isApp = false;
-                             isGraphic = true;
-                             isWeb = false;
-                           });
-                         },
-                                           
-                         child:  projectbox(
-                           icon: Icons.graphic_eq,
-                           title: 'Graphic Design',
-                           description: 'I design logos, banners, flyers, and other graphic designs',
-                                        
-                           hover: isGraphic, 
-                          ),),
-                                        
-                              InkWell(
-                         onTap: () {
-                           setState(() {
-                             isApp = false;
-                             isGraphic = false;
-                             isWeb = true;
-                           });
-                         },
-                         child: projectbox(
-                           icon: Icons.web,
-                           title: 'Web Development',
-                           description: 'I develop websites and web applications using flutter and dart',
-                           hover: isWeb,
-                         ),
-                       ),
-                       ],
-                       ),
-                         
-                     ],
-                   ),
+    final Size size = MediaQuery.of(context).size;
+    return HelperClass(
+      mobile: Column(
+        // mainAxisSize: MainAxisSize.min,
+        children: [
+          buildMyServicesText(),
+          Constants.sizedBox(height: 60.0),
+          InkWell(
+            onTap: () {},
+            onHover: (value) {
+              setState(() {
+                isApp = value;
+              });
+            },
+            child: buildAnimatedContainer(
+              title: 'App Development',
+              asset: AppAssets.code,
+              hover: isApp,
+            ),
+          ),
+          Constants.sizedBox(height: 24.0),
+          InkWell(
+            onTap: () {},
+            onHover: (value) {
+              setState(() {
+                isGraphic = value;
+              });
+            },
+            child: buildAnimatedContainer(
+              title: 'Graphic Designing',
+              asset: AppAssets.brush,
+              hover: isGraphic,
+            ),
+          ),
+          Constants.sizedBox(height: 24.0),
+          InkWell(
+            onTap: () {},
+            onHover: (value) {
+              setState(() {
+                isDataAnalyst = value;
+              });
+            },
+            child: buildAnimatedContainer(
+              title: 'Digital Marketing',
+              asset: AppAssets.analyst,
+              hover: isDataAnalyst,
+            ),
+          )
+        ],
+      ),
+      tablet: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          buildMyServicesText(),
+          Constants.sizedBox(height: 60.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {},
+                onHover: (value) {
+                  setState(() {
+                    isApp = value;
+                  });
+                },
+                child: buildAnimatedContainer(
+                  title: 'App Development',
+                  asset: AppAssets.code,
+                  hover: isApp,
+                ),
+              ),
+              Constants.sizedBox(width: 24.0),
+              InkWell(
+                onTap: () {},
+                onHover: (value) {
+                  setState(() {
+                    isGraphic = value;
+                  });
+                },
+                child: buildAnimatedContainer(
+                  title: 'Graphic Designing',
+                  asset: AppAssets.brush,
+                  hover: isGraphic,
+                ),
+              ),
+            ],
+          ),
+          Constants.sizedBox(height: 26.0),
+          InkWell(
+            onTap: () {},
+            onHover: (value) {
+              setState(() {
+                isDataAnalyst = value;
+              });
+            },
+            child: buildAnimatedContainer(
+              title: 'Digital Marketing',
+              asset: AppAssets.analyst,
+              hover: isDataAnalyst,
+              width: 725.0,
+              hoverWidth: 735.0,
+            ),
+          )
+        ],
+      ),
+      desktop: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          buildMyServicesText(),
+          Constants.sizedBox(height: 60.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {},
+                onHover: (value) {
+                  setState(() {
+                    isApp = value;
+                  });
+                },
+                child: buildAnimatedContainer(
+                  title: 'App Development',
+                  asset: AppAssets.code,
+                  hover: isApp,
+                ),
+              ),
+              Constants.sizedBox(width: 24.0),
+              InkWell(
+                onTap: () {},
+                onHover: (value) {
+                  setState(() {
+                    isGraphic = value;
+                  });
+                },
+                child: buildAnimatedContainer(
+                  title: 'Graphic Designing',
+                  asset: AppAssets.brush,
+                  hover: isGraphic,
+                ),
+              ),
+              Constants.sizedBox(width: 24.0),
+              InkWell(
+                onTap: () {},
+                onHover: (value) {
+                  setState(() {
+                    isDataAnalyst = value;
+                  });
+                },
+                child: buildAnimatedContainer(
+                  title: 'Digital Marketing',
+                  asset: AppAssets.analyst,
+                  hover: isDataAnalyst,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+      paddingWidth: size.width * 0.04,
+      bgColor: AppColors.bgColor,
+    );
+  }
+
+  FadeInDown buildMyServicesText() {
+    return FadeInDown(
+      duration: const Duration(milliseconds: 1200),
+      child: RichText(
+        text: TextSpan(
+          text: 'My ',
+          style: AppTextStyles.headingStyles(fontSize: 30.0),
+          children: [
+            TextSpan(
+              text: 'Services',
+              style: AppTextStyles.headingStyles(
+                  fontSize: 30.0, color: AppColors.robinEdgeBlue),
+            )
+          ],
         ),
       ),
     );
-        
-      
-   
   }
 
-  Column buildmyservice(Size size) {
-    return Column(
-               mainAxisSize: MainAxisSize.min,
-               children: [
-               
-                FadeInDown(
-                   duration: Duration(milliseconds: 1000),
-                   child: RichText(
-                     text: TextSpan(
-                       text: 'My ',
-                       style: AppTextStyles.headingStyles(fontSize: 36).copyWith(color: Colors.yellow),
-                       children: [
-                         TextSpan(
-                           text: 'Certificate',
-                           style: AppTextStyles.headingStyles(fontSize: 36),
-                         )
-                       ]
-                     ),
-                   ),
-              )
-               ]
-    );
-          
-      
-  }
-
-  AnimatedContainer projectbox({
-    required IconData icon,
+  AnimatedContainer buildAnimatedContainer({
     required String title,
-    required String description,
-    required bool hover, }) {
+    required String asset,
+    required bool hover,
+    double width = 350,
+    double hoverWidth = 360,
+  }) {
     return AnimatedContainer(
-                    duration: Duration(milliseconds: 500),
-                    width: hover ? 360 : 350,
-                    height: hover ? 390 : 380,
-                    transform: hover ? onHoverActive : onHoverRemove,
-
-                    decoration: BoxDecoration(
-                     borderRadius: BorderRadius.all(Radius.circular(25)),
-                     color: AppColors.bgColor2,
-                     border: Border.all(color: AppColors.themecolor, width: 3),
-                     boxShadow: [
-                       BoxShadow(
-                         color: Colors.black.withOpacity(0.5),
-                         spreadRadius: 5,
-                         blurRadius: 7,
-                         offset: Offset(3.0, 4.5),
-                       )
-                     ]
-                    ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SizedBox(height: 10,),
-                        Icon(icon, size: 50, color: Colors.white,),
-                     
-                        Text(title,
-                        style: AppTextStyles.monteseratstyle(color:Colors.white,fontSize: 24),),
-                       
-                        Text(description,
-                        style:AppTextStyles.normalStyles(color: Colors.white).copyWith(color:Colors.white,fontSize: 16)),
-                        SizedBox(height: 30,),
-                        AppButtons().buildmaterialbutton(onTap: (){},
-                                     buttonname:"Read MOre",)
-                                   
-                                   
-                      ],
-                    ),
-                  ),
-                  
-                  );
+      duration: const Duration(milliseconds: 300),
+      width: hover ? hoverWidth : width,
+      height: hover ? 390 : 380,
+      alignment: Alignment.center,
+      transform: hover ? onHoverActive : onHoverRemove,
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
+      decoration: BoxDecoration(
+        color: AppColors.bgColor2,
+        borderRadius: BorderRadius.circular(30),
+        border:
+            hover ? Border.all(color: AppColors.themeColor, width: 3) : null,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black54,
+            spreadRadius: 4.0,
+            blurRadius: 4.5,
+            offset: Offset(3.0, 4.5),
+          )
+        ],
+      ),
+      child: Column(
+        children: [
+          Image.asset(
+            asset,
+            width: 50,
+            height: 50,
+            color: AppColors.themeColor,
+          ),
+          Constants.sizedBox(height: 30.0),
+          Text(
+            title,
+            style: AppTextStyles.montserratStyle(
+                color: Colors.white, fontSize: 22.0),
+          ),
+          Constants.sizedBox(height: 12.0),
+          Text(
+            'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
+            ' The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,',
+            style: AppTextStyles.normalStyle(fontSize: 14.0),
+            textAlign: TextAlign.center,
+          ),
+          Constants.sizedBox(height: 20.0),
+          AppButtons.buildMaterialButton(buttonName: 'Read More', onTap: () {})
+        ],
+      ),
+    );
   }
 }

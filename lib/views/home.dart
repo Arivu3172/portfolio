@@ -1,8 +1,7 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:port_folio/animation/profile_animation.dart';
 import 'package:port_folio/globals/app_button.dart';
 import 'package:port_folio/globals/app_colors.dart';
@@ -10,15 +9,16 @@ import 'package:port_folio/globals/app_text_styles.dart';
 import 'package:port_folio/globals/constants.dart';
 import 'package:port_folio/helper_class.dart';
 
+
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
- final socialButtons = <IconData>[
+           final socialButtons = <IconData>[
   FontAwesomeIcons.facebook,
   FontAwesomeIcons.twitter,
   FontAwesomeIcons.linkedin,
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
         FadeInRight(
           duration: const Duration(milliseconds: 1400),
           child: Text(
-            'ARIVAZHAGAN A',
+            'Mukhtar Ali Khan',
             style: AppTextStyles.headingStyles(),
           ),
         ),
@@ -96,18 +96,12 @@ class _HomePageState extends State<HomePage> {
                     textStyle:
                         AppTextStyles.montserratStyle(color: Colors.lightBlue),
                   ),
-                  TyperAnimatedText('Frontend Developer ',
+                  TyperAnimatedText('Freelancer',
                       textStyle: AppTextStyles.montserratStyle(
                           color: Colors.lightBlue)),
-                  TyperAnimatedText('Android Developer',
+                  TyperAnimatedText('YouTuber',
                       textStyle: AppTextStyles.montserratStyle(
-                          color: Colors.lightBlue)),
-                          TyperAnimatedText('ios Developer',
-                      textStyle: AppTextStyles.montserratStyle(
-                          color: Colors.lightBlue)),
-                          TyperAnimatedText('Web Developer',
-                      textStyle: AppTextStyles.montserratStyle(
-                          color: Colors.lightBlue)),
+                          color: Colors.lightBlue))
                 ],
                 pause: const Duration(milliseconds: 1000),
                 displayFullTextOnTap: true,
@@ -155,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                   hoverColor: AppColors.themeColor,
                   splashColor: AppColors.lawGreen,
                   child: buildSocialButton(
-                      Icons: socialButtons[index],
+                      icon: socialButtons[index],
                       hover: socialBI == index ? true : false),
                 );
               },
@@ -166,13 +160,13 @@ class _HomePageState extends State<HomePage> {
         FadeInUp(
           duration: const Duration(milliseconds: 1800),
           child: AppButtons.buildMaterialButton(
-              onTap: () {}, buttonName: 'Download Resume'),
+              onTap: () {}, buttonName: 'Download CV'),
         ),
       ],
     );
   }
 
-  Ink buildSocialButton({required  Icons, required bool hover}) {
+  Ink buildSocialButton({required icon, required bool hover}) {
     return Ink(
       width: 45,
       height: 45,
@@ -182,9 +176,7 @@ class _HomePageState extends State<HomePage> {
         shape: BoxShape.circle,
       ),
       padding: const EdgeInsets.all(6),
-      child: Icon(Icons
-      ,size:24 ,
-       
+      child: Icon(icon,size: 30,
         color: hover ? AppColors.bgColor : AppColors.themeColor,
         // fit: BoxFit.fill,
       ),

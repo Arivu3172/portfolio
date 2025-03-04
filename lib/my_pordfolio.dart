@@ -1,150 +1,174 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:port_folio/app_colors.dart';
-import 'package:port_folio/app_text_styles.dart';
+import 'package:port_folio/globals/app_assets.dart';
+import 'package:port_folio/helper_class.dart';
 
-class MyPordfolio extends StatefulWidget {
-  const MyPordfolio({super.key});
+import '../globals/app_colors.dart';
+import '../globals/app_text_styles.dart';
+import '../globals/constants.dart';
+
+class MyPortfolio extends StatefulWidget {
+  const MyPortfolio({Key? key}) : super(key: key);
 
   @override
-  State<MyPordfolio> createState() => _MyPordfolioState();
+  State<MyPortfolio> createState() => _MyPortfolioState();
 }
 
-class _MyPordfolioState extends State<MyPordfolio> {
-final  onHovereffect =Matrix4.identity()..scale(1.0);
-  List images =<String> [
-    'assets/dev1.png',
-     'assets/dev2.png',
-      'assets/dev3.png',
-        'assets/dev4.png',
-          'assets/dev5.png',
-          'assets/dev6.png',
-    
+class _MyPortfolioState extends State<MyPortfolio> {
+  final onH0verEffect = Matrix4.identity()..scale(1.0);
 
+  List images = <String>[
+    AppAssets.work1,
+    AppAssets.work2,
+    AppAssets.work1,
+    AppAssets.work2,
+    AppAssets.work1,
+    AppAssets.work2,
   ];
 
+  var hoveredIndex;
 
-  var hoverindex;
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      width: size.width,
-      height: size.height,
-      color: AppColors.bgColor,
-      padding: EdgeInsets.symmetric(horizontal: size.width * 0.1,vertical: 30),
-      alignment: Alignment.center,
-      child: Column(
+    final Size size = MediaQuery.of(context).size;
+    return HelperClass(
+      mobile: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          FadeInDown(
-            duration: Duration(milliseconds: 1000),
-            child: RichText(
-              text: TextSpan(
-                text: 'Latest ',
-                style: AppTextStyles.headingStyles(fontSize:30),
-                children: [
-                  TextSpan(
-                    text: 'Projects',
-                    style: AppTextStyles.headingStyles(fontSize: 30)
-                  )
-                ]
-                )
-                )
-                ),
-                SizedBox(height: 40,),
+          buildProjectText(),
+          Constants.sizedBox(height: 40.0),
+          buildProjectGridView(crossAxisCount: 1)
+        ],
+      ),
+      tablet: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          buildProjectText(),
+          Constants.sizedBox(height: 40.0),
+          buildProjectGridView(crossAxisCount: 2)
+        ],
+      ),
+      desktop: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          buildProjectText(),
+          Constants.sizedBox(height: 40.0),
+          buildProjectGridView(crossAxisCount: 3),
+        ],
+      ),
+      paddingWidth: size.width * 0.1,
+      bgColor: AppColors.bgColor2,
+    );
+  }
 
-                GridView.builder(
-                  itemCount: images.length,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 24,
-                    mainAxisSpacing: 24,
-                    mainAxisExtent: 280,
+  GridView buildProjectGridView({required int crossAxisCount}) {
+    return GridView.builder(
+      itemCount: images.length,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        mainAxisExtent: 280,
+        mainAxisSpacing: 24,
+        crossAxisSpacing: 24,
+      ),
+      itemBuilder: (context, index) {
+        var image = images[index];
+        return FadeInUpBig(
+          duration: const Duration(milliseconds: 1600),
+          child: InkWell(
+            onTap: () {},
+            onHover: (value) {
+              setState(() {
+                if (value) {
+                  hoveredIndex = index;
+                } else {
+                  hoveredIndex = null;
+                }
+              });
+            },
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                        image: AssetImage(image), fit: BoxFit.fill),
+                  ),
                 ),
-                itemBuilder: (context, index) {
-                  var image = images[index];
-                  return FadeInUpBig(
-                    duration: Duration(milliseconds:1500 ),
-                    child: InkWell(
-                      onTap: () {},
-                      onHover: (value) {
-                        
-                          setState(() {
-                            
-                        
-                          if (value) {
-                            hoverindex = index;
-                          }else{
-                            hoverindex = null;
-                          }
-                          
-                            
-                        });
-                      },
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                           ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child:  Image(
-                            image: AssetImage(image),
-                            fit: BoxFit.cover,
-                          )
+                Visibility(
+                  visible: index == hoveredIndex,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 600),
+                    transform: index == hoveredIndex ? onH0verEffect : null,
+                    curve: Curves.easeIn,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 14, vertical: 16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: LinearGradient(
+                          colors: [
+                            AppColors.themeColor.withOpacity(1.0),
+                            AppColors.themeColor.withOpacity(0.9),
+                            AppColors.themeColor.withOpacity(0.8),
+                            AppColors.themeColor.withOpacity(0.6),
+                          ],
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter),
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          'App Development',
+                          style: AppTextStyles.montserratStyle(
+                              color: Colors.black87, fontSize: 20),
+                        ),
+                        Constants.sizedBox(height: 15.0),
+                        Text(
+                          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+                          style:
+                              AppTextStyles.normalStyle(color: Colors.black87),
+                          textAlign: TextAlign.center,
+                        ),
+                        Constants.sizedBox(height: 30.0),
+                        CircleAvatar(
+                          maxRadius: 25,
+                          backgroundColor: Colors.white,
+                          child: Image.asset(
+                            AppAssets.share,
+                            width: 25,
+                            height: 25,
+                            fit: BoxFit.fill,
                           ),
-                          Visibility(
-                            visible: index==hoverindex,
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 200),
-                              transform: index== hoverindex ? onHovereffect:null,
-                              padding: EdgeInsets.symmetric(horizontal: 12,vertical: 14),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    AppColors.themecolor.withOpacity(0.9),
-                                     AppColors.themecolor.withOpacity(0.7),
-                                      AppColors.themecolor.withOpacity(0.6),
-                                       AppColors.themecolor.withOpacity(0.5),
-                                        AppColors.themecolor.withOpacity(0.8),
-                                  ]
-                                )
-                                  
-                              ),
-                              child: Column(
-                                children: [
-                                  Text("App Development",
-                                  style: AppTextStyles.monteseratstyle(color: Colors.black87, fontSize: 20), ),
-                                  SizedBox(height: 15,),
-                                  Text("To pursue a career as a Flutter developer in Chennai, focus on enhancing your skills through personal projects, crafting a resume that highlights your proficiency in Dart and Flutter, and exploring entry-level opportunities at local  ",
-                                  style: AppTextStyles.normalStyles(color: Colors.white).copyWith(color: Colors.black87),
-                                  
-                                  textAlign: TextAlign.center,),
-                                  SizedBox(height: 22,),
-                                  CircleAvatar(
-                                    maxRadius: 25,
-                                    backgroundColor: Colors.white,
-                                    child: Icon(Icons.share,color: Colors.black87,
-                                    size: 20,)
-                                  )
-                                ],
-                              ),
-                                        
-                            ),
-                          )
-                                      
-                        ]
-                      ),
-                    )
-                  );
-                  
-                },
-                )
-        ]
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  FadeInDown buildProjectText() {
+    return FadeInDown(
+      duration: const Duration(milliseconds: 1200),
+      child: RichText(
+        text: TextSpan(
+          text: 'Latest ',
+          style: AppTextStyles.headingStyles(fontSize: 30.0),
+          children: [
+            TextSpan(
+              text: 'Projects',
+              style: AppTextStyles.headingStyles(
+                  fontSize: 30, color: AppColors.robinEdgeBlue),
+            )
+          ],
+        ),
       ),
     );
   }
