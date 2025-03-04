@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:port_folio/app_assets.dart';
+
+class ProfileAnimation extends StatefulWidget {
+  const ProfileAnimation({super.key});
+
+  @override
+  State<ProfileAnimation> createState() => _ProfileAnimationState();
+}
+
+class _ProfileAnimationState extends State<ProfileAnimation> with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<Offset> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this,duration: Duration(seconds: 3))..repeat(reverse: true);
+    _animation = Tween(begin: Offset(0,0.2), end: Offset(0, 0.3)).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SlideTransition(
+      position: _animation,
+      child: Image.asset(AppAssets.profile,
+      width: 360,
+      height: 390,
+      ),
+    );
+  }
+}
