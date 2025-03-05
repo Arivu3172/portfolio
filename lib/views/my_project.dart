@@ -1,29 +1,29 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:port_folio/globals/app_assets.dart';
-import 'package:port_folio/helper_class.dart';
+import 'package:port_folio/views/helper_class.dart';
 
-import '../globals/app_colors.dart';
-import '../globals/app_text_styles.dart';
-import '../globals/constants.dart';
+import '../../globals/app_colors.dart';
+import '../../globals/app_text_styles.dart';
+import '../../globals/constants.dart';
 
-class MyPortfolio extends StatefulWidget {
-  const MyPortfolio({Key? key}) : super(key: key);
+class MyProject extends StatefulWidget {
+  const MyProject({Key? key}) : super(key: key);
 
   @override
-  State<MyPortfolio> createState() => _MyPortfolioState();
+  State<MyProject> createState() => _MyProjectState();
 }
 
-class _MyPortfolioState extends State<MyPortfolio> {
+class _MyProjectState extends State<MyProject> {
   final onH0verEffect = Matrix4.identity()..scale(1.0);
 
   List images = <String>[
     AppAssets.work1,
     AppAssets.work2,
-    AppAssets.work1,
-    AppAssets.work2,
-    AppAssets.work1,
-    AppAssets.work2,
+    AppAssets.work3,
+    AppAssets.work4,
+    AppAssets.work5,
+    AppAssets.work6,
   ];
 
   var hoveredIndex;
@@ -135,11 +135,10 @@ class _MyPortfolioState extends State<MyPortfolio> {
                         CircleAvatar(
                           maxRadius: 25,
                           backgroundColor: Colors.white,
-                          child: Image.asset(
-                            AppAssets.share,
-                            width: 25,
-                            height: 25,
-                            fit: BoxFit.fill,
+                          child:Icon(
+                            Icons.share,
+                            size: 25,
+                            
                           ),
                         )
                       ],

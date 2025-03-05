@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:port_folio/globals/app_colors.dart';
 import 'package:port_folio/globals/app_text_styles.dart';
 import 'package:port_folio/globals/constants.dart';
-import 'package:port_folio/home.dart';
-import 'package:port_folio/my_pordfolio.dart';
-import 'package:port_folio/my_services.dart';
+import 'package:port_folio/views/home.dart';
+import 'package:port_folio/views/my_project.dart';
+import 'package:port_folio/views/my_certificate.dart';
 import 'package:port_folio/views/about_me.dart';
 import 'package:port_folio/views/contect.dart';
 import 'package:port_folio/views/footer_class.dart';
@@ -28,8 +28,8 @@ class _MainDashBoardState extends State<MainDashBoard> {
   final menuItems = <String>[
     'Home',
     'About',
-    'Services',
-    'Portfolio',
+    'Certificate',
+    'Project',
     'Contact',
   ];
 
@@ -38,8 +38,8 @@ class _MainDashBoardState extends State<MainDashBoard> {
   final screensList = const <Widget>[
     HomePage(),
     AboutMe(),
-    MyServices(),
-    MyPortfolio(),
+    MyCertificate(),
+    MyProject(),
     ContactUs(),
     FooterClass(),
   ];
@@ -72,10 +72,11 @@ class _MainDashBoardState extends State<MainDashBoard> {
         title: LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth < 768) {
+              var name = AppTextStyles.Name();
               return Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text('Portfolio'),
+                  Text('ARIVAZHAGAN',style:name,),
                   const Spacer(),
                   PopupMenuButton(
                     icon: Icon(
@@ -104,10 +105,11 @@ class _MainDashBoardState extends State<MainDashBoard> {
                 ],
               );
             } else {
+              var name = AppTextStyles.Name();
               return Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text('Portfolio'),
+                  Text('ARIVAZHAGAN',style:name,),
                   const Spacer(),
                   SizedBox(
                     height: 30,

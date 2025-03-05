@@ -7,7 +7,7 @@ import 'package:port_folio/globals/app_button.dart';
 import 'package:port_folio/globals/app_colors.dart';
 import 'package:port_folio/globals/app_text_styles.dart';
 import 'package:port_folio/globals/constants.dart';
-import 'package:port_folio/helper_class.dart';
+import 'package:port_folio/views/helper_class.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({Key? key}) : super(key: key);
@@ -48,7 +48,7 @@ class AboutMe extends StatelessWidget {
     return FadeInRight(
       duration: const Duration(milliseconds: 1200),
       child: Image.asset(
-        AppAssets.profile2,
+        AppAssets.profile,
         height: 450,
         width: 400,
       ),

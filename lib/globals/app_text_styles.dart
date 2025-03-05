@@ -44,4 +44,10 @@ class AppTextStyles {
     return GoogleFonts.comfortaa(
         fontSize: 18, fontWeight: FontWeight.w800, color: Colors.grey);
   }
+
+  static TextStyle Name (){
+    return GoogleFonts.bigShouldersInlineDisplay(
+      fontSize: 30,fontWeight: FontWeight.bold,color: Colors.white
+    );
+  }
 }

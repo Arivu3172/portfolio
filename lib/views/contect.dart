@@ -4,7 +4,7 @@ import 'package:port_folio/globals/app_button.dart';
 import 'package:port_folio/globals/app_colors.dart';
 import 'package:port_folio/globals/app_text_styles.dart';
 import 'package:port_folio/globals/constants.dart';
-import 'package:port_folio/helper_class.dart';
+import 'package:port_folio/views/helper_class.dart';
 
 
 class ContactUs extends StatelessWidget {

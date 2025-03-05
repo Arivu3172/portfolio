@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:port_folio/globals/app_colors.dart';
+import 'package:port_folio/views/home.dart';
+import 'package:port_folio/views/main_dashboard.dart';
 
 
 class FooterClass extends StatelessWidget {
@@ -18,7 +20,13 @@ class FooterClass extends StatelessWidget {
         horizontal: 40,
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => MainDashBoard()),
+          );
+          
+        },
         child: Container(
           height: 40,
           width: 40,

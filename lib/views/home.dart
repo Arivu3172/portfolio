@@ -1,35 +1,60 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:port_folio/animation/profile_animation.dart';
 import 'package:port_folio/globals/app_button.dart';
 import 'package:port_folio/globals/app_colors.dart';
 import 'package:port_folio/globals/app_text_styles.dart';
 import 'package:port_folio/globals/constants.dart';
-import 'package:port_folio/helper_class.dart';
-
+import 'package:port_folio/views/helper_class.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-           final socialButtons = <IconData>[
-  FontAwesomeIcons.facebook,
-  FontAwesomeIcons.twitter,
-  FontAwesomeIcons.linkedin,
-  FontAwesomeIcons.instagram,
-  FontAwesomeIcons.github,
+ final List<Map<String, dynamic>> socialButtons = [
+  {
+    'icon': FontAwesomeIcons.linkedin,
+    'url': 'https://www.linkedin.com/in/arivazhagan-a-0431bb24a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+  },
+  {
+    'icon': FontAwesomeIcons.github,
+    'url': 'https://github.com/Arivu3172',
+  },
+  {
+    'icon': FontAwesomeIcons.envelope,
+    'url': 'mailto:arivazhagan3172@gmail.com',
+  },
+  {
+    'icon': FontAwesomeIcons.facebook,
+    'url': 'https://www.facebook.com/share/1Gzq2e124c/',
+  },
+ 
+  
+  
 ];
+
 
   var socialBI;
 
+  Future<void> _launchUrl(String url) async {
+  final Uri uri = Uri.parse(url);
+  if (!await launchUrl(uri)) {
+    throw 'Could not launch $url';
+  }
+}
+  
+
   @override
   Widget build(BuildContext context) {
+   
     final Size size = MediaQuery.of(context).size;
     return HelperClass(
       mobile: Column(
@@ -76,7 +101,7 @@ class _HomePageState extends State<HomePage> {
         FadeInRight(
           duration: const Duration(milliseconds: 1400),
           child: Text(
-            'Mukhtar Ali Khan',
+            'ARIVAZHAGAN A',
             style: AppTextStyles.headingStyles(),
           ),
         ),
@@ -85,10 +110,12 @@ class _HomePageState extends State<HomePage> {
           duration: const Duration(milliseconds: 1400),
           child: Row(
             children: [
-              Text(
-                'And I\'m a ',
-                style: AppTextStyles.montserratStyle(color: Colors.white),
-              ),
+              
+                Text(
+                  'And I\'m a ',
+                  style: AppTextStyles.montserratStyle(color: Colors.white),
+                ),
+              
               AnimatedTextKit(
                 animatedTexts: [
                   TyperAnimatedText(
@@ -96,12 +123,21 @@ class _HomePageState extends State<HomePage> {
                     textStyle:
                         AppTextStyles.montserratStyle(color: Colors.lightBlue),
                   ),
-                  TyperAnimatedText('Freelancer',
+                  TyperAnimatedText('Frontend Developer ',
                       textStyle: AppTextStyles.montserratStyle(
                           color: Colors.lightBlue)),
-                  TyperAnimatedText('YouTuber',
+                  TyperAnimatedText('Android Developer',
                       textStyle: AppTextStyles.montserratStyle(
-                          color: Colors.lightBlue))
+                          color: Colors.lightBlue)),
+                          TyperAnimatedText('ios Developer',
+                      textStyle: AppTextStyles.montserratStyle(
+                          color: Colors.lightBlue)),
+                          TyperAnimatedText('Web Developer',
+                      textStyle: AppTextStyles.montserratStyle(
+                          color: Colors.lightBlue)),
+                          TyperAnimatedText('Application Developer',
+                      textStyle: AppTextStyles.montserratStyle(
+                          color: Colors.lightBlue)),
                 ],
                 pause: const Duration(milliseconds: 1000),
                 displayFullTextOnTap: true,
@@ -126,60 +162,59 @@ class _HomePageState extends State<HomePage> {
         FadeInUp(
           duration: const Duration(milliseconds: 1600),
           child: SizedBox(
-            height: 48,
-            child: ListView.separated(
-              itemCount: socialButtons.length,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              separatorBuilder: (context, child) =>
-                  Constants.sizedBox(width: 8.0),
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {},
-                  onHover: (value) {
-                    setState(() {
-                      if (value) {
-                        socialBI = index;
-                      } else {
-                        socialBI = null;
-                      }
-                    });
-                  },
-                  borderRadius: BorderRadius.circular(550.0),
-                  hoverColor: AppColors.themeColor,
-                  splashColor: AppColors.lawGreen,
-                  child: buildSocialButton(
-                      icon: socialButtons[index],
-                      hover: socialBI == index ? true : false),
-                );
-              },
-            ),
-          ),
+  height: 48,
+  child: ListView.separated(
+    itemCount: socialButtons.length,
+    shrinkWrap: true,
+    scrollDirection: Axis.horizontal,
+    separatorBuilder: (context, child) => SizedBox(width: 8.0),
+    itemBuilder: (context, index) {
+      final item = socialButtons[index];
+      return InkWell(
+        onTap: () => _launchUrl(item['url']),
+        onHover: (value) {
+          setState(() {
+            socialBI = value ? index : null;
+          });
+        },
+        borderRadius: BorderRadius.circular(550.0),
+        hoverColor: AppColors.themeColor,
+        splashColor: AppColors.lawGreen,
+        child: buildSocialButton(
+          icon: item['icon'],
+          hover: socialBI == index,
+        ),
+      );
+    },
+  ),
+)
+
         ),
         Constants.sizedBox(height: 18.0),
         FadeInUp(
           duration: const Duration(milliseconds: 1800),
           child: AppButtons.buildMaterialButton(
-              onTap: () {}, buttonName: 'Download CV'),
+              onTap: () {}, buttonName: 'Download Resume'),
         ),
       ],
     );
   }
 
-  Ink buildSocialButton({required icon, required bool hover}) {
-    return Ink(
-      width: 45,
-      height: 45,
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.themeColor, width: 2.0),
-        color: AppColors.bgColor,
-        shape: BoxShape.circle,
-      ),
-      padding: const EdgeInsets.all(6),
-      child: Icon(icon,size: 30,
-        color: hover ? AppColors.bgColor : AppColors.themeColor,
-        // fit: BoxFit.fill,
-      ),
-    );
-  }
+ Ink buildSocialButton({required IconData icon, required bool hover}) {
+  return Ink(
+    width: 45,
+    height:45,
+    decoration: BoxDecoration(
+      border: Border.all(color: AppColors.themeColor, width: 2.0),
+      color: AppColors.bgColor,
+      shape: BoxShape.circle,
+    ),
+    padding: const EdgeInsets.all(6),
+    child: Icon(
+      icon,
+      size: 24,
+      color: hover ? AppColors.bgColor : AppColors.themeColor,
+    ),
+  );
+}
 }

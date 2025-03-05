@@ -7,16 +7,16 @@ import 'package:port_folio/globals/app_button.dart';
 import 'package:port_folio/globals/app_colors.dart';
 import 'package:port_folio/globals/app_text_styles.dart';
 import 'package:port_folio/globals/constants.dart';
-import 'package:port_folio/helper_class.dart';
+import 'package:port_folio/views/helper_class.dart';
 
-class MyServices extends StatefulWidget {
-  const MyServices({Key? key}) : super(key: key);
+class MyCertificate extends StatefulWidget {
+  const MyCertificate({Key? key}) : super(key: key);
 
   @override
-  State<MyServices> createState() => _MyServicesState();
+  State<MyCertificate> createState() => _MyCertificateState();
 }
 
-class _MyServicesState extends State<MyServices> {
+class _MyCertificateState extends State<MyCertificate> {
   bool isApp = false, isGraphic = false, isDataAnalyst = false;
 
   final onHoverActive = Matrix4.identity()..translate(0, -10, 0);
@@ -197,7 +197,7 @@ class _MyServicesState extends State<MyServices> {
           style: AppTextStyles.headingStyles(fontSize: 30.0),
           children: [
             TextSpan(
-              text: 'Services',
+              text: 'Certificate',
               style: AppTextStyles.headingStyles(
                   fontSize: 30.0, color: AppColors.robinEdgeBlue),
             )

@@ -1,15 +1,20 @@
 
+import 'package:flutter/material.dart';
 
 
   class AppAssets{
   
-  static String profile1 = 'assets/images/profile.png';
-  static String profile2 = 'assets/images/pro2.png';
+  static String profile = 'profile.png';
+  
   static String code = 'assets/images/coding.png';
   static String brush = 'assets/images/brush-stroke.png';
   static String analyst = 'assets/images/analytics.png';
-  static String work1 = 'assets/images/work1.jpg';
-  static String work2 = 'assets/images/work2.jpg';
-  static String share = 'assets/images/share.png';
+  static String work1 = 'dev1.png';
+  static String work2 = 'dev2.png';
+  static String work3 = 'dev3.png';
+  static String work4 = 'dev4.png';
+  static String work5 = 'dev5.png';
+  static String work6 = 'dev6.png';
+  
   }
 
