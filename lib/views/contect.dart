@@ -84,7 +84,7 @@ class ContactUs extends StatelessWidget {
       tablet: buildForm(),
       desktop: buildForm(),
       paddingWidth: size.width * 0.2,
-      bgColor: AppColors.bgColor,
+    //  bgColor: AppColors.bgColor,
     );
   }
 
@@ -204,7 +204,8 @@ class ContactUs extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide.none),
         filled: true,
-        fillColor: AppColors.bgColor2,
+        fillColor: Colors.black,
+       // fillColor: AppColors.bgColor2,
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 24, vertical: 16));
   }

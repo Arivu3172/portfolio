@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:port_folio/globals/app_colors.dart';
-import 'package:port_folio/views/home.dart';
 import 'package:port_folio/views/main_dashboard.dart';
 
 
 class FooterClass extends StatelessWidget {
   const FooterClass({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final Size _ = MediaQuery.of(context).size;
     return Container(
       height: 70,
       width: MediaQuery.of(context).size.width,
-      color: AppColors.bgColor2,
+      color: Colors.black,
+      //color: AppColors.bgColor2,
       alignment: Alignment.centerRight,
       padding: const EdgeInsets.symmetric(
         horizontal: 40,

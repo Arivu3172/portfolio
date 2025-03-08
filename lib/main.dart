@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PageStorageBucket bucket = PageStorageBucket();
+    final Size _ = MediaQuery.of(context).size;
     return MaterialApp(
       title: 'My Portfolio',
       debugShowCheckedModeBanner: false,

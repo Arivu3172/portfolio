@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../globals/app_assets.dart';
 
 class ProfileAnimation extends StatefulWidget {
-  const ProfileAnimation({Key? key}) : super(key: key);
+  const ProfileAnimation({super.key});
 
   @override
   _ProfileAnimationState createState() => _ProfileAnimationState();
@@ -33,15 +33,21 @@ class _ProfileAnimationState extends State<ProfileAnimation>
 
   @override
   Widget build(BuildContext context) {
-    return SlideTransition(
+    return  SlideTransition(
       position: _animation,
-      child: Image.asset(
-        AppAssets.profile,
-        width: 340,
-        height: 450,
+      child: Container(
+         width: 240,
+         height: 350,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        image: DecorationImage(image: AssetImage(AppAssets.profile,),
+         
+         
+         fit: BoxFit.fill,
+      
         
-        fit: BoxFit.fill,
-        
+        )
+                  ),
       ),
     );
   }

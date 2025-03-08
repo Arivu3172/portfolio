@@ -1,11 +1,9 @@
 
-import 'package:flutter/material.dart';
 
 
   class AppAssets{
   
-  static String profile = 'profile.png';
-  
+  static String profile = 'profile2.png';
   static String code = 'assets/images/coding.png';
   static String brush = 'assets/images/brush-stroke.png';
   static String analyst = 'assets/images/analytics.png';

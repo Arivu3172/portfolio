@@ -184,7 +184,7 @@ class _MyCertificateState extends State<MyCertificate> {
         ],
       ),
       paddingWidth: size.width * 0.04,
-      bgColor: AppColors.bgColor,
+   //   bgColor: AppColors.bgColor,
     );
   }
 
@@ -222,7 +222,8 @@ class _MyCertificateState extends State<MyCertificate> {
       transform: hover ? onHoverActive : onHoverRemove,
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
       decoration: BoxDecoration(
-        color: AppColors.bgColor2,
+        color: Colors.black,
+       // color: AppColors.bgColor2,
         borderRadius: BorderRadius.circular(30),
         border:
             hover ? Border.all(color: AppColors.themeColor, width: 3) : null,
@@ -237,12 +238,12 @@ class _MyCertificateState extends State<MyCertificate> {
       ),
       child: Column(
         children: [
-          Image.asset(
-            asset,
-            width: 50,
-            height: 50,
-            color: AppColors.themeColor,
-          ),
+          // Image.asset(
+          //   asset,
+          //   width: 50,
+          //   height: 50,
+          //   color: AppColors.themeColor,
+          // ),
           Constants.sizedBox(height: 30.0),
           Text(
             title,
@@ -257,7 +258,7 @@ class _MyCertificateState extends State<MyCertificate> {
             textAlign: TextAlign.center,
           ),
           Constants.sizedBox(height: 20.0),
-          AppButtons.buildMaterialButton(buttonName: 'Read More', onTap: () {})
+          AppButtons.buildMaterialButton(buttonName: 'View', onTap: () {})
         ],
       ),
     );

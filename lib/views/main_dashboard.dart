@@ -60,12 +60,14 @@ class _MainDashBoardState extends State<MainDashBoard> {
   final yourScrollController = ScrollController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: AppColors.bgColor,
+      
+      // backgroundColor: AppColors.bgColor,
       appBar: AppBar(
-        backgroundColor: AppColors.bgColor,
+        backgroundColor: Colors.black,
+       // backgroundColor: AppColors.bgColor,
         toolbarHeight: 90,
         titleSpacing: 40,
         elevation: 0,
@@ -84,7 +86,8 @@ class _MainDashBoardState extends State<MainDashBoard> {
                       size: 32,
                       color: AppColors.white,
                     ),
-                    color: AppColors.bgColor2,
+                    color: Colors.black,
+                   // color: AppColors.bgColor2,
                     position: PopupMenuPosition.under,
                     constraints:
                         BoxConstraints.tightFor(width: size.width * 0.9),
@@ -94,6 +97,7 @@ class _MainDashBoardState extends State<MainDashBoard> {
                         .map(
                           (e) => PopupMenuItem(
                             textStyle: AppTextStyles.headerTextStyle(),
+                            
                             onTap: () {
                               scrollTo(index: e.key);
                             },
@@ -147,22 +151,30 @@ class _MainDashBoardState extends State<MainDashBoard> {
           },
         ),
       ),
-      body: Scrollbar(
-        trackVisibility: true,
-        thumbVisibility: true,
-        thickness: 8,
-        interactive: true,
-        controller: yourScrollController,
-        child: ScrollablePositionedList.builder(
-          itemCount: screensList.length,
-          itemScrollController: _itemScrollController,
-          itemPositionsListener: itemPositionsListener,
-          scrollOffsetListener: scrollOffsetListener,
-          itemBuilder: (context, index) {
-            return screensList[index];
-          },
+      body: Container(
+        decoration: BoxDecoration(
+          
+          image: DecorationImage(image: AssetImage("wall9.png"),
+          fit: BoxFit.cover
+          ),
         ),
-      ),
+       child:  Scrollbar(
+          trackVisibility: true,
+          thumbVisibility: true,
+          thickness: 8,
+          interactive: true,
+          controller: yourScrollController,
+          child: ScrollablePositionedList.builder(
+            itemCount: screensList.length,
+            itemScrollController: _itemScrollController,
+            itemPositionsListener: itemPositionsListener,
+            scrollOffsetListener: scrollOffsetListener,
+            itemBuilder: (context, index) {
+              return screensList[index];
+            },
+          ),
+        ),
+      )
     );
   }
 

@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       paddingWidth: size.width * 0.1,
-      bgColor: Colors.transparent,
+   //   bgColor: Colors.transparent,
     );
   }
 
@@ -121,23 +121,24 @@ class _HomePageState extends State<HomePage> {
                   TyperAnimatedText(
                     'Flutter Developer',
                     textStyle:
-                        AppTextStyles.montserratStyle(color: Colors.lightBlue),
+                        AppTextStyles.montserratStyle(color:Colors.lightBlue),
+                        //Colors.lightBlue
                   ),
                   TyperAnimatedText('Frontend Developer ',
                       textStyle: AppTextStyles.montserratStyle(
-                          color: Colors.lightBlue)),
+                          color:Colors.lightBlue)),
                   TyperAnimatedText('Android Developer',
                       textStyle: AppTextStyles.montserratStyle(
                           color: Colors.lightBlue)),
                           TyperAnimatedText('ios Developer',
                       textStyle: AppTextStyles.montserratStyle(
-                          color: Colors.lightBlue)),
+                          color:Colors.lightBlue)),
                           TyperAnimatedText('Web Developer',
                       textStyle: AppTextStyles.montserratStyle(
                           color: Colors.lightBlue)),
                           TyperAnimatedText('Application Developer',
                       textStyle: AppTextStyles.montserratStyle(
-                          color: Colors.lightBlue)),
+                          color:Colors.lightBlue)),
                 ],
                 pause: const Duration(milliseconds: 1000),
                 displayFullTextOnTap: true,
@@ -194,7 +195,7 @@ class _HomePageState extends State<HomePage> {
         FadeInUp(
           duration: const Duration(milliseconds: 1800),
           child: AppButtons.buildMaterialButton(
-              onTap: () {}, buttonName: 'Download Resume'),
+              onTap: () {}, buttonName: 'View Resume'),
         ),
       ],
     );

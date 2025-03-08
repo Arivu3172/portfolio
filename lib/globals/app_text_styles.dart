@@ -11,7 +11,7 @@ class AppTextStyles {
   }
 
   static TextStyle montserratStyle(
-      {required Color color, double fontSize = 24}) {
+      {required Color color, double fontSize = 20}) {
     return GoogleFonts.montserrat(
       color: color,
       fontWeight: FontWeight.w800,
@@ -20,7 +20,7 @@ class AppTextStyles {
   }
 
   static TextStyle headingStyles(
-      {double fontSize = 36, Color color = Colors.white}) {
+      {double fontSize = 30, Color color = Colors.white}) {
     return GoogleFonts.rubikMoonrocks(
       fontSize: fontSize,
       fontWeight: FontWeight.bold,

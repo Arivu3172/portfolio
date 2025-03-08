@@ -57,7 +57,7 @@ class _MyProjectState extends State<MyProject> {
         ],
       ),
       paddingWidth: size.width * 0.1,
-      bgColor: AppColors.bgColor2,
+      //bgColor: AppColors.bgColor2,
     );
   }
 
@@ -131,16 +131,16 @@ class _MyProjectState extends State<MyProject> {
                               AppTextStyles.normalStyle(color: Colors.black87),
                           textAlign: TextAlign.center,
                         ),
-                        Constants.sizedBox(height: 30.0),
-                        CircleAvatar(
-                          maxRadius: 25,
-                          backgroundColor: Colors.white,
-                          child:Icon(
-                            Icons.share,
-                            size: 25,
+                        // Constants.sizedBox(height: 30.0),
+                        // CircleAvatar(
+                        //   maxRadius: 25,
+                        //   backgroundColor: Colors.white,
+                        //   child:Icon(
+                        //     Icons.share,
+                        //     size: 25,
                             
-                          ),
-                        )
+                          //),
+                      //  )
                       ],
                     ),
                   ),
